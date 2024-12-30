@@ -4,6 +4,7 @@ classDiagram
     +string name
     +string email
     +string password
+    +string phone
     +created_at
     +updated_at
   }
@@ -13,8 +14,14 @@ classDiagram
     +float price
     +string status
     +string delivery_address
-    +string delivery_phone
-    +string delivery_city
+    +created_at
+    +updated_at
+  }
+
+  class OrderItem {
+    +int id
+    +int quantity
+    +float price
     +created_at
     +updated_at
   }
@@ -44,6 +51,7 @@ classDiagram
   }
 
   User "1" --> "*" Order
-  Order "*" --> "*" Product : "Order_Product"
-  Product "*" --> "*" Extra_Topping : "Product_Extra_Topping"
+  Order "1" --> "*" OrderItem
+  Product "1" --> "*" OrderItem
   Product "*" --> "1" Category
+  Product "*" --> "*" Extra_Topping
