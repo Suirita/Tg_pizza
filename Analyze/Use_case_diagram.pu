@@ -1,0 +1,29 @@
+@startuml
+
+left to right direction
+actor Customer as customer
+actor Admin as admin
+
+rectangle "Tg_pizza" {
+  usecase "View All Products" as UC_ViewProducts
+  usecase "Add Extra Toppings" as UC_AddExtraToppings
+  usecase "Place Orders" as UC_PlaceOrders
+  usecase "View Their Orders" as UC_ViewTheirOrders
+
+  usecase "Manage Products" as UC_ManageProducts
+  usecase "Manage Categories" as UC_ManageCategories
+  usecase "Manage Toppings" as UC_ManageExtraToppings
+  usecase "View All Orders" as UC_ViewAllOrders
+}
+
+customer -- UC_ViewProducts
+customer -- UC_PlaceOrders
+UC_PlaceOrders <.. UC_AddExtraToppings : <<extend>>
+customer -- UC_ViewTheirOrders
+
+admin -- UC_ManageProducts
+admin -- UC_ManageCategories
+admin -- UC_ManageExtraToppings
+admin -- UC_ViewAllOrders
+
+@enduml
